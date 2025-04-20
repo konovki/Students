@@ -15,6 +15,23 @@ def send_welcome(message):
 
 bot.polling()
 ```
+#### Смотрим на содерижимое message
+```ruby
+import telebot
+
+API_TOKEN = '5145023087:AAElLJz71P6JG1BfVAGnILkv44fWiPANU7A'
+bot = telebot.TeleBot(API_TOKEN)
+
+
+@bot.message_handler(commands=['info'])
+def send_info(message):
+    for data in message.__dict__:
+        print(data, message.__dict__[data])
+
+
+bot.polling()
+
+```
 
 #### Создание кнопок в сообщении и в меню
 ```ruby
