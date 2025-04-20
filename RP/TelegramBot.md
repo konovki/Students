@@ -48,6 +48,28 @@ def handle_option(message):
 bot.polling()
 
 ```
+#### Обрабатываем текст от пользователя
+```ruby
+import telebot
+
+API_TOKEN = '5145023087:AAElLJz71P6JG1BfVAGnILkv44fWiPANU7A'
+bot = telebot.TeleBot(API_TOKEN)
+
+
+@bot.message_handler(func=lambda message: True)
+def handle_option(message):
+    text = message.text.split(' ')
+    if text[0] == 'скажи':
+        bot.reply_to(message, f"Вы сказали: {message.text}")
+    elif text[0] == 'молчи':
+        bot.reply_to(message, f"Вы сказали молчать")
+    else:
+        pass
+
+
+bot.polling()
+
+```
 #### Учимся отправлять пользователю сообщение в формате кода
 ```ruby
 import telebot
