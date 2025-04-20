@@ -15,6 +15,22 @@ def send_welcome(message):
 
 bot.polling()
 ```
+#### Обработчик текста 
+```ruby
+import telebot
+
+API_TOKEN = '5145023087:AAElLJz71P6JG1BfVAGnILkv44fWiPANU7A'
+bot = telebot.TeleBot(API_TOKEN)
+
+
+@bot.message_handler(func=lambda message: True)
+def handle_option(message):
+    bot.reply_to(message, f"Вы сказали: {message.text}")
+
+bot.polling()
+
+```
+
 #### Смотрим на содерижимое message
 ```ruby
 import telebot
