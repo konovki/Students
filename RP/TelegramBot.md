@@ -32,6 +32,32 @@ def send_info(message):
 bot.polling()
 
 ```
+#### Учимся отправлять пользователю сообщение в формате кода
+```ruby
+import telebot
+
+API_TOKEN = '5145023087:AAElLJz71P6JG1BfVAGnILkv44fWiPANU7A'
+bot = telebot.TeleBot(API_TOKEN)
+
+
+@bot.message_handler(commands=['info'])
+def send_info(message):
+    for data in message.__dict__:
+        print(data, message.__dict__[data])
+
+    text = (f'username: {message.from_user.username}\n'
+            f'first_name: {message.from_user.first_name}\n'
+            f'last_name: {message.from_user.last_name}\n'
+            f'id: {message.from_user.id}\n')
+    bot.reply_to(message, text)
+    code_text = f"```\n{text}\n```"
+    id = message.from_user.id
+    bot.send_message(id, text=code_text, parse_mode='MarkdownV2')
+
+
+bot.polling()
+
+```
 
 #### Создание кнопок в сообщении и в меню
 ```ruby
