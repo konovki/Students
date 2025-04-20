@@ -1,5 +1,20 @@
 # Занятие по созданию TelegramBot-а
 
+#### Создаем обработчик команд 
+```ruby
+import telebot
+
+API_TOKEN = '5145023087:AAElLJz71P6JG1BfVAGnILkv44fWiPANU7A'
+bot = telebot.TeleBot(API_TOKEN)
+
+
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+    bot.reply_to(message, "Привет! Я бот.")
+
+
+bot.polling()
+```
 
 #### Создание кнопок в сообщении и в меню
 ```ruby
